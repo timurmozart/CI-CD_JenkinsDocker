@@ -8,7 +8,7 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build Docker Image for me') {
             when {
                 branch 'master'
             }
@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker Image') {
+        stage('Push Docker Image, also for me') {
             when {
                 branch 'master'
             }
@@ -34,12 +34,12 @@ pipeline {
                 }
             }
         }
-        stage('DeployToProduction') {
+        stage('DeployToProduction, lol') {
             when {
                 branch 'master'
             }
             steps {
-                input 'Deploy to Production?'
+                input 'POEHALI?'
                 milestone(1)
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
